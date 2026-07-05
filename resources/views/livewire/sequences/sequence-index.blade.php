@@ -1,16 +1,21 @@
 <div class="space-y-10">
-    <section class="fb-panel p-5 overflow-hidden">
-        <div class="grid gap-8 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
+    <section class="relative overflow-hidden rounded-3xl border border-stone-800 bg-stone-950 shadow-2xl shadow-black/30">
+        <div class="absolute inset-0 opacity-70">
+            <div class="absolute -left-24 -top-24 h-72 w-72 rounded-full bg-amber-500/10 blur-3xl"></div>
+            <div class="absolute -bottom-32 right-0 h-80 w-80 rounded-full bg-teal-500/10 blur-3xl"></div>
+        </div>
+
+        <div class="relative grid gap-8 px-6 py-8 md:grid-cols-[1.35fr_0.65fr] md:px-8 lg:px-10">
             <div>
                 <p class="fb-heading-kicker">
                     Phrase Builder
                 </p>
 
-                <h1 class="mt-3 text-4xl font-semibold tracking-tight text-stone-100 md:text-5xl">
+                <h1 class="mt-4 max-w-4xl text-4xl font-semibold tracking-tight text-stone-100 sm:text-5xl">
                     Floorbenders phrase paths.
                 </h1>
 
-                <p class="mt-5 max-w-3xl text-base leading-7 text-stone-400">
+                <p class="mt-5 max-w-2xl text-base leading-7 text-stone-400">
                     Browse ordered movement phrases built from the Movement Atlas. Each phrase reveals its layer, orientation, aspect, realm, and atlas-note patterns.
                 </p>
             </div>
