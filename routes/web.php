@@ -1,48 +1,47 @@
 <?php
 
+use App\Enums\MediaProcessingStatus;
+use App\Enums\MovementStatus;
+use App\Enums\SequenceMediaProcessingStatus;
+use App\Enums\SequenceStatus;
+use App\Livewire\Admin\Media\MovementMediaManager;
 use App\Livewire\Admin\Movements\MovementEdit;
 use App\Livewire\Admin\Movements\MovementIndex;
-use App\Livewire\Admin\Media\MovementMediaManager;
-use App\Livewire\Admin\Sequences\SequenceBrowser;
 use App\Livewire\Admin\Sequences\SequenceCreate;
 use App\Livewire\Admin\Sequences\SequenceEdit;
 use App\Livewire\Admin\Sequences\SequenceIndex as AdminSequenceIndex;
-use App\Livewire\Sequences\SequenceIndex as PublicSequenceIndex;
-use App\Livewire\Sequences\SequenceShow;
 use App\Livewire\Library\MovementBrowser;
 use App\Livewire\Library\MovementShow;
-use App\Enums\MediaProcessingStatus;
-use App\Enums\MovementStatus;
-use App\Enums\SequenceStatus;
-use App\Enums\SequenceMediaProcessingStatus;
+use App\Livewire\Sequences\SequenceIndex as PublicSequenceIndex;
+use App\Livewire\Sequences\SequenceShow;
 use App\Models\Movement;
 use App\Models\MovementMediaAsset;
 use App\Models\Sequence;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    $totalMovementSlots = \App\Models\Movement::query()->count();
+    $totalMovementSlots = Movement::query()->count();
 
-    $publicReadyMovements = \App\Models\Movement::query()
+    $publicReadyMovements = Movement::query()
         ->published()
         ->withCompletedMedia()
         ->count();
 
-    $processedMediaAssets = \App\Models\MovementMediaAsset::query()
-        ->where('processing_status', \App\Enums\MediaProcessingStatus::Complete)
+    $processedMediaAssets = MovementMediaAsset::query()
+        ->where('processing_status', MediaProcessingStatus::Complete)
         ->count();
 
-    $publishedPhrases = \App\Models\Sequence::query()
-        ->where('status', \App\Enums\SequenceStatus::Published)
+    $publishedPhrases = Sequence::query()
+        ->where('status', SequenceStatus::Published)
         ->count();
 
-    $featuredPhrase = \App\Models\Sequence::query()
+    $featuredPhrase = Sequence::query()
         ->withCount([
             'sequenceMovements' => fn ($query) => $query
                 ->with('movement.mediaAsset')
                 ->orderBy('sort_order'),
         ])
-        ->where('status', \App\Enums\SequenceStatus::Published)
+        ->where('status', SequenceStatus::Published)
         ->where('featured', true)
         ->orderByDesc('featured')
         ->latest('updated_at')
@@ -77,10 +76,6 @@ Route::prefix('taxonomy')->name('taxonomy.')->group(function (): void {
     Route::view('/orientations', 'taxonomy.orientations')->name('orientations');
     Route::view('/layers', 'taxonomy.layers')->name('layers');
     Route::view('/notes', 'taxonomy.notes')->name('notes');
-});
-
-Route::middleware(['auth', 'verified'])->group(function () {
-    Route::view('dashboard', 'dashboard')->name('dashboard');
 });
 
 Route::middleware(['auth', 'admin'])

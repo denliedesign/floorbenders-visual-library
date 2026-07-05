@@ -13,44 +13,6 @@
                 <p class="mt-5 max-w-3xl text-base leading-7 text-stone-400">
                     Browse ordered movement phrases built from the Movement Atlas. Each phrase reveals its layer, orientation, aspect, realm, and atlas-note patterns.
                 </p>
-
-                <div class="mt-7 flex flex-wrap gap-3">
-                    <a href="{{ route('library.index') }}" class="fb-button-secondary">
-                        Explore Movement Atlas
-                    </a>
-                </div>
-            </div>
-
-            <div class="grid gap-4 sm:grid-cols-3 lg:grid-cols-1">
-                <div class="rounded-3xl border border-stone-800 bg-stone-950/70 p-5">
-                    <p class="text-xs font-semibold uppercase tracking-[0.18em] text-stone-500">
-                        Published Phrases
-                    </p>
-
-                    <p class="mt-2 text-4xl font-semibold text-stone-100">
-                        {{ $publishedPhraseCount }}
-                    </p>
-                </div>
-
-                <div class="rounded-3xl border border-stone-800 bg-stone-950/70 p-5">
-                    <p class="text-xs font-semibold uppercase tracking-[0.18em] text-stone-500">
-                        Generated Previews
-                    </p>
-
-                    <p class="mt-2 text-4xl font-semibold text-teal-300">
-                        {{ $generatedPhraseMediaCount }}
-                    </p>
-                </div>
-
-                <div class="rounded-3xl border border-stone-800 bg-stone-950/70 p-5">
-                    <p class="text-xs font-semibold uppercase tracking-[0.18em] text-stone-500">
-                        Featured
-                    </p>
-
-                    <p class="mt-2 text-4xl font-semibold text-amber-300">
-                        {{ $featuredPhraseCount }}
-                    </p>
-                </div>
             </div>
         </div>
     </section>

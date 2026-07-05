@@ -27,6 +27,7 @@ function createPublishableSequence(): Sequence
         'movement_id' => $movement->id,
         'raw_video_path' => 'movements/1/raw/video.mp4',
         'clean_video_path' => 'movements/1/processed/rising-tide-clean.mp4',
+        'gif_path' => 'movements/1/processed/rising-tide-preview.gif',
         'thumbnail_path' => 'movements/1/processed/rising-tide-thumbnail.jpg',
         'processing_status' => MediaProcessingStatus::Complete,
     ]);

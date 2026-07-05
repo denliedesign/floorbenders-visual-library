@@ -51,7 +51,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="h-full">
+                <div class="h-full relative">
                     @if ($featuredPhrase)
                         <video
                             autoplay
