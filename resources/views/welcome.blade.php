@@ -63,12 +63,12 @@
                         >
                             <source src="{{ $featuredPhrase->phraseVideoUrl() }}" type="video/mp4">
                         </video>
-                    @endif
-                    <div>
-                        <div class="absolute top-4 right-4">
-                            <x-ui.badge>Phrase: {{ $featuredPhrase->title }}</x-ui.badge>
+                        <div>
+                            <div class="absolute top-4 right-4">
+                                <x-ui.badge>Phrase: {{ $featuredPhrase->title }}</x-ui.badge>
+                            </div>
                         </div>
-                    </div>
+                    @endif
                 </div>
             </div>
         </section>
