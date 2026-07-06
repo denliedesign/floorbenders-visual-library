@@ -166,12 +166,12 @@
                     </div>
 
                     <div class="flex flex-wrap gap-3">
-                        <x-ui.button wire:click="uploadRawVideo">
+                        <x-ui.button wire:click="saveUpload">
                             Upload Video
                         </x-ui.button>
 
                         @if ($mediaAsset)
-                            <x-ui.button variant="danger" wire:click="removeMedia">
+                            <x-ui.button variant="danger" wire:click="removeRawVideo">
                                 Remove Media
                             </x-ui.button>
                         @endif
@@ -213,8 +213,8 @@
                             type="number"
                             step="0.01"
                             min="0"
-                            wire:model="trim_start_seconds"
-                            :error="$errors->first('trim_start_seconds')"
+                            wire:model="trimStartSeconds"
+                            :error="$errors->first('trimStartSeconds')"
                         />
 
                         <x-ui.input
@@ -223,13 +223,13 @@
                             type="number"
                             step="0.01"
                             min="0"
-                            wire:model="trim_end_seconds"
-                            :error="$errors->first('trim_end_seconds')"
+                            wire:model="trimEndSeconds"
+                            :error="$errors->first('trimEndSeconds')"
                         />
                     </div>
 
                     <div class="mt-5 flex flex-wrap gap-3">
-                        <x-ui.button wire:click="saveTrim">
+                        <x-ui.button wire:click="saveTrimPoints">
                             Save Trim Points
                         </x-ui.button>
 
