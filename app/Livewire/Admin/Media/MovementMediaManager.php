@@ -2,8 +2,8 @@
 
 namespace App\Livewire\Admin\Media;
 
-use App\Jobs\Media\ProcessMovementVideo;
 use App\Enums\MediaProcessingStatus;
+use App\Jobs\Media\ProcessMovementVideo;
 use App\Models\Movement;
 use App\Models\MovementMediaAsset;
 use Illuminate\Support\Facades\Storage;
@@ -39,7 +39,7 @@ class MovementMediaManager extends Component
     public function saveUpload(): void
     {
         $this->validate([
-            'rawVideo' => ['required', 'file', 'mimes:mp4,mov,webm,avi', 'max:204800'],
+            'rawVideo' => 'required|file|max:204800|mimetypes:video/mp4,video/quicktime,video/webm,video/x-msvideo',
         ]);
 
         if ($this->mediaAsset?->raw_video_path) {
@@ -87,6 +87,7 @@ class MovementMediaManager extends Component
 
         if (! $this->mediaAsset) {
             $this->addError('rawVideo', 'Upload a raw video before setting trim points.');
+
             return;
         }
 
@@ -141,11 +142,13 @@ class MovementMediaManager extends Component
     {
         if (! $this->mediaAsset) {
             $this->addError('rawVideo', 'Upload a raw video before processing.');
+
             return;
         }
 
         if ($this->mediaAsset->trim_start_seconds === null || $this->mediaAsset->trim_end_seconds === null) {
             $this->addError('trimStartSeconds', 'Set trim points before processing.');
+
             return;
         }
 
