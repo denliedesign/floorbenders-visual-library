@@ -39,7 +39,7 @@ class MovementMediaManager extends Component
     public function saveUpload(): void
     {
         $this->validate([
-            'rawVideo' => 'required|file|max:204800|mimetypes:video/mp4,video/quicktime,video/webm,video/x-msvideo',
+            'rawVideo' => 'required|file|max:512000|mimetypes:video/mp4,video/quicktime,video/webm,video/x-msvideo',
         ]);
 
         if ($this->mediaAsset?->raw_video_path) {
